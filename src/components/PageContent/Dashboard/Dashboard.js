@@ -937,7 +937,7 @@ const Dashboard = () => {
                           <input
                             type='text'
                             class='form-control'
-                            Value='10,000'
+                            value='10,000'
                           />
                           <div class='input-group-text wd-100 p-0 border-0 d-block'>
                             <select
@@ -965,7 +965,7 @@ const Dashboard = () => {
                           <input
                             type='text'
                             class='form-control'
-                            Value='0.254'
+                            value='0.254'
                           />
                           <div class='input-group-text wd-100 p-0 border-0 d-block'>
                             <select
@@ -1008,7 +1008,7 @@ const Dashboard = () => {
                           <input
                             type='text'
                             class='form-control'
-                            Value='0.254'
+                            value='0.254'
                           />
                           <div class='input-group-text p-0 border-0 wd-100 d-block'>
                             <select
@@ -1036,7 +1036,7 @@ const Dashboard = () => {
                           <input
                             type='text'
                             class='form-control'
-                            Value='10,000'
+                            value='10,000'
                           />
                           <div class='input-group-text wd-100 p-0 border-0 d-block'>
                             <select
@@ -1320,7 +1320,7 @@ const Dashboard = () => {
       <div
         class='modal fade'
         id='searchModal'
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='searchModal'
         aria-hidden='true'
       >

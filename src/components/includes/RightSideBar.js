@@ -6,7 +6,7 @@ const RightSideBar = () => {
       {/* <!-- Start Rightsidebar --> */}
       <div
         className='offcanvas offcanvas-end'
-        tabindex='-1'
+        tabIndex='-1'
         id='rightsidebar-canvas'
         aria-labelledby='offcanvasRightLabel'
       >

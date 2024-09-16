@@ -95,7 +95,7 @@ var pJS = function (tag_id, params) {
           enable: true,
           mode: 'grab',
         },
-        onclick: {
+        onClick: {
           enable: true,
           mode: 'push',
         },
@@ -619,14 +619,14 @@ var pJS = function (tag_id, params) {
 
       if (
         isInArray('bubble', pJS.interactivity.events.onhover.mode) ||
-        isInArray('bubble', pJS.interactivity.events.onclick.mode)
+        isInArray('bubble', pJS.interactivity.events.onClick.mode)
       ) {
         pJS.fn.modes.bubbleParticle(p);
       }
 
       if (
         isInArray('repulse', pJS.interactivity.events.onhover.mode) ||
-        isInArray('repulse', pJS.interactivity.events.onclick.mode)
+        isInArray('repulse', pJS.interactivity.events.onClick.mode)
       ) {
         pJS.fn.modes.repulseParticle(p);
       }
@@ -871,10 +871,9 @@ var pJS = function (tag_id, params) {
         init();
       }
     } else if (
-
-    /* on click event */
-      pJS.interactivity.events.onclick.enable &&
-      isInArray('bubble', pJS.interactivity.events.onclick.mode)
+      /* on click event */
+      pJS.interactivity.events.onClick.enable &&
+      isInArray('bubble', pJS.interactivity.events.onClick.mode)
     ) {
       if (pJS.tmp.bubble_clicking) {
         var dx_mouse = p.x - pJS.interactivity.mouse.click_pos_x,
@@ -984,8 +983,8 @@ var pJS = function (tag_id, params) {
         p.y = pos.y;
       }
     } else if (
-      pJS.interactivity.events.onclick.enable &&
-      isInArray('repulse', pJS.interactivity.events.onclick.mode)
+      pJS.interactivity.events.onClick.enable &&
+      isInArray('repulse', pJS.interactivity.events.onClick.mode)
     ) {
       if (!pJS.tmp.repulse_finish) {
         pJS.tmp.repulse_count++;
@@ -1105,7 +1104,7 @@ var pJS = function (tag_id, params) {
     /* detect mouse pos - on hover / click event */
     if (
       pJS.interactivity.events.onhover.enable ||
-      pJS.interactivity.events.onclick.enable
+      pJS.interactivity.events.onClick.enable
     ) {
       /* el on mousemove */
       pJS.interactivity.el.addEventListener('mousemove', function (e) {
@@ -1137,14 +1136,14 @@ var pJS = function (tag_id, params) {
     }
 
     /* on click event */
-    if (pJS.interactivity.events.onclick.enable) {
+    if (pJS.interactivity.events.onClick.enable) {
       pJS.interactivity.el.addEventListener('click', function () {
         pJS.interactivity.mouse.click_pos_x = pJS.interactivity.mouse.pos_x;
         pJS.interactivity.mouse.click_pos_y = pJS.interactivity.mouse.pos_y;
         pJS.interactivity.mouse.click_time = new Date().getTime();
 
-        if (pJS.interactivity.events.onclick.enable) {
-          switch (pJS.interactivity.events.onclick.mode) {
+        if (pJS.interactivity.events.onClick.enable) {
+          switch (pJS.interactivity.events.onClick.mode) {
             case 'push':
               if (pJS.particles.move.enable) {
                 pJS.fn.modes.pushParticles(

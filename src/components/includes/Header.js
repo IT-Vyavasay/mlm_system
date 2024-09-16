@@ -71,7 +71,7 @@ const Header = () => {
             <div className='header-element'>
               {/* <!-- Start::header-link --> */}
               <span
-                onclick={() => console.log('first')}
+                onClick={() => console.log('first')}
                 aria-label='Hide Sidebar'
                 className='sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle'
               >
@@ -837,7 +837,7 @@ const Header = () => {
             <div className='header-element header-fullscreen'>
               {/* <!-- Start::header-link --> */}
               <a
-                onclick='openFullscreen();'
+                onClick='openFullscreen();'
                 href='javascript:void(0);'
                 className='header-link'
               >

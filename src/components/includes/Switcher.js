@@ -6,7 +6,7 @@ const Switcher = () => {
       {/* <!-- Start Switcher --> */}
       <div
         className='offcanvas offcanvas-end'
-        tabindex='-1'
+        tabIndex='-1'
         id='switcher-canvas'
         aria-labelledby='offcanvasRightLabel'
       >
@@ -60,7 +60,7 @@ const Switcher = () => {
               id='switcher-home'
               role='tabpanel'
               aria-labelledby='switcher-home-tab'
-              tabindex='0'
+              tabIndex='0'
             >
               <div className=''>
                 <p className='switcher-style-head'>Theme Color Mode:</p>
@@ -561,7 +561,7 @@ const Switcher = () => {
               id='switcher-profile'
               role='tabpanel'
               aria-labelledby='switcher-profile-tab'
-              tabindex='0'
+              tabIndex='0'
             >
               <div>
                 <div className='theme-colors'>

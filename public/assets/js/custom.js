@@ -1,52 +1,52 @@
 (function () {
-  "use strict";
+  'use strict';
 
   /* page loader */
-  
+
   function hideLoader() {
-    const loader = document.getElementById("loader");
-    loader.classList.add("d-none")
+    const loader = document.getElementById('loader');
+    loader.classList.add('d-none');
   }
 
-  window.addEventListener("load", hideLoader);
+  window.addEventListener('load', hideLoader);
   /* page loader */
 
   /* tooltip */
   const tooltipTriggerList = document.querySelectorAll(
-    '[data-bs-toggle="tooltip"]'
+    '[data-bs-toggle="tooltip"]',
   );
   const tooltipList = [...tooltipTriggerList].map(
-    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+    tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl),
   );
 
   /* popover  */
   const popoverTriggerList = document.querySelectorAll(
-    '[data-bs-toggle="popover"]'
+    '[data-bs-toggle="popover"]',
   );
   const popoverList = [...popoverTriggerList].map(
-    (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+    popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl),
   );
 
   //switcher color pickers
   const pickrContainerPrimary = document.querySelector(
-    ".pickr-container-primary"
+    '.pickr-container-primary',
   );
   const themeContainerPrimary = document.querySelector(
-    ".theme-container-primary"
+    '.theme-container-primary',
   );
   const pickrContainerBackground = document.querySelector(
-    ".pickr-container-background"
+    '.pickr-container-background',
   );
   const themeContainerBackground = document.querySelector(
-    ".theme-container-background"
+    '.theme-container-background',
   );
 
   /* for theme primary */
   const nanoThemes = [
     [
-      "nano",
+      'nano',
       {
-        defaultRepresentation: "RGB",
+        defaultRepresentation: 'RGB',
         components: {
           preview: true,
           opacity: false,
@@ -67,12 +67,12 @@
   const nanoButtons = [];
   let nanoPickr = null;
   for (const [theme, config] of nanoThemes) {
-    const button = document.createElement("button");
+    const button = document.createElement('button');
     button.innerHTML = theme;
     nanoButtons.push(button);
 
-    button.addEventListener("click", () => {
-      const el = document.createElement("p");
+    button.addEventListener('click', () => {
+      const el = document.createElement('p');
       pickrContainerPrimary.appendChild(el);
 
       /* Delete previous instance */
@@ -82,7 +82,7 @@
 
       /* Apply active class */
       for (const btn of nanoButtons) {
-        btn.classList[btn === button ? "add" : "remove"]("active");
+        btn.classList[btn === button ? 'add' : 'remove']('active');
       }
 
       /* Create fresh instance */
@@ -91,28 +91,28 @@
           {
             el,
             theme,
-            default: "#845adf",
+            default: '#845adf',
           },
-          config
-        )
+          config,
+        ),
       );
 
       /* Set events */
-      nanoPickr.on("changestop", (source, instance) => {
+      nanoPickr.on('changestop', (source, instance) => {
         let color = instance.getColor().toRGBA();
-        let html = document.querySelector("html");
+        let html = document.querySelector('html');
         html.style.setProperty(
-          "--primary-rgb",
+          '--primary-rgb',
           `${Math.floor(color[0])}, ${Math.floor(color[1])}, ${Math.floor(
-            color[2]
-          )}`
+            color[2],
+          )}`,
         );
         /* theme color picker */
         localStorage.setItem(
-          "primaryRGB",
+          'primaryRGB',
           `${Math.floor(color[0])}, ${Math.floor(color[1])}, ${Math.floor(
-            color[2]
-          )}`
+            color[2],
+          )}`,
         );
         updateColors();
       });
@@ -126,9 +126,9 @@
   /* for theme background */
   const nanoThemes1 = [
     [
-      "nano",
+      'nano',
       {
-        defaultRepresentation: "RGB",
+        defaultRepresentation: 'RGB',
         components: {
           preview: true,
           opacity: false,
@@ -149,12 +149,12 @@
   const nanoButtons1 = [];
   let nanoPickr1 = null;
   for (const [theme, config] of nanoThemes) {
-    const button = document.createElement("button");
+    const button = document.createElement('button');
     button.innerHTML = theme;
     nanoButtons1.push(button);
 
-    button.addEventListener("click", () => {
-      const el = document.createElement("p");
+    button.addEventListener('click', () => {
+      const el = document.createElement('p');
       pickrContainerBackground.appendChild(el);
 
       /* Delete previous instance */
@@ -164,7 +164,7 @@
 
       /* Apply active class */
       for (const btn of nanoButtons) {
-        btn.classList[btn === button ? "add" : "remove"]("active");
+        btn.classList[btn === button ? 'add' : 'remove']('active');
       }
 
       /* Create fresh instance */
@@ -173,51 +173,51 @@
           {
             el,
             theme,
-            default: "#845adf",
+            default: '#845adf',
           },
-          config
-        )
+          config,
+        ),
       );
 
       /* Set events */
-      nanoPickr1.on("changestop", (source, instance) => {
+      nanoPickr1.on('changestop', (source, instance) => {
         let color = instance.getColor().toRGBA();
-        let html = document.querySelector("html");
+        let html = document.querySelector('html');
         html.style.setProperty(
-          "--body-bg-rgb",
-          `${color[0]}, ${color[1]}, ${color[2]}`
+          '--body-bg-rgb',
+          `${color[0]}, ${color[1]}, ${color[2]}`,
         );
         document
-          .querySelector("html")
+          .querySelector('html')
           .style.setProperty(
-            "--body-bg-rgb2",
-            `${color[0] + 14}, ${color[1] + 14}, ${color[2] + 14}`
+            '--body-bg-rgb2',
+            `${color[0] + 14}, ${color[1] + 14}, ${color[2] + 14}`,
           );
         document
-          .querySelector("html")
+          .querySelector('html')
           .style.setProperty(
-            "--light-rgb",
-            `${color[0] + 14}, ${color[1] + 14}, ${color[2] + 14}`
+            '--light-rgb',
+            `${color[0] + 14}, ${color[1] + 14}, ${color[2] + 14}`,
           );
         document
-          .querySelector("html")
+          .querySelector('html')
           .style.setProperty(
-            "--form-control-bg",
-            `rgb(${color[0] + 14}, ${color[1] + 14}, ${color[2] + 14})`
+            '--form-control-bg',
+            `rgb(${color[0] + 14}, ${color[1] + 14}, ${color[2] + 14})`,
           );
-        localStorage.removeItem("bgtheme");
+        localStorage.removeItem('bgtheme');
         updateColors();
-        html.setAttribute("data-theme-mode", "dark");
-        html.setAttribute("data-menu-styles", "dark");
-        html.setAttribute("data-header-styles", "dark");
-        document.querySelector("#switcher-dark-theme").checked = true;
+        html.setAttribute('data-theme-mode', 'dark');
+        html.setAttribute('data-menu-styles', 'dark');
+        html.setAttribute('data-header-styles', 'dark');
+        document.querySelector('#switcher-dark-theme').checked = true;
         localStorage.setItem(
-          "bodyBgRGB",
-          `${color[0]}, ${color[1]}, ${color[2]}`
+          'bodyBgRGB',
+          `${color[0]}, ${color[1]}, ${color[2]}`,
         );
         localStorage.setItem(
-          "bodylightRGB",
-          `${color[0] + 14}, ${color[1] + 14}, ${color[2] + 14}`
+          'bodylightRGB',
+          `${color[0] + 14}, ${color[1] + 14}, ${color[2] + 14}`,
         );
       });
     });
@@ -228,103 +228,103 @@
 
   /* header theme toggle */
   function toggleTheme() {
-    let html = document.querySelector("html");
-    if (html.getAttribute("data-theme-mode") === "dark"){
-      html.setAttribute("data-theme-mode", "light");
-      html.setAttribute("data-header-styles", "light");
-      html.setAttribute("data-menu-styles", "light");
-      if (!localStorage.getItem("primaryRGB")) {
-        html.setAttribute("style", "");
+    let html = document.querySelector('html');
+    if (html.getAttribute('data-theme-mode') === 'dark') {
+      html.setAttribute('data-theme-mode', 'light');
+      html.setAttribute('data-header-styles', 'light');
+      html.setAttribute('data-menu-styles', 'light');
+      if (!localStorage.getItem('primaryRGB')) {
+        html.setAttribute('style', '');
       }
-      html.removeAttribute("data-bg-theme");
+      html.removeAttribute('data-bg-theme');
       document
-        .querySelector("html")
-        .style.removeProperty("--body-bg-rgb", localStorage.bodyBgRGB);
+        .querySelector('html')
+        .style.removeProperty('--body-bg-rgb', localStorage.bodyBgRGB);
       checkOptions();
-      html.style.removeProperty("--body-bg-rgb2");
-      html.style.removeProperty("--light-rgb");
-      html.style.removeProperty("--form-control-bg");
-      html.style.removeProperty("--input-border");
-      
-      document.querySelector("#switcher-background4").checked = false;
-      document.querySelector("#switcher-background3").checked = false;
-      document.querySelector("#switcher-background2").checked = false;
-      document.querySelector("#switcher-background1").checked = false;
-      document.querySelector("#switcher-background").checked = false;
+      html.style.removeProperty('--body-bg-rgb2');
+      html.style.removeProperty('--light-rgb');
+      html.style.removeProperty('--form-control-bg');
+      html.style.removeProperty('--input-border');
 
-      localStorage.removeItem("xinodarktheme");
-      localStorage.removeItem("xinoMenu");
-      localStorage.removeItem("xinoHeader");
-      localStorage.removeItem("bodylightRGB");
-      localStorage.removeItem("bodyBgRGB");
-      if (localStorage.getItem("xinolayout") != "horizontal") {
-        html.setAttribute("data-menu-styles", "gradient");
+      document.querySelector('#switcher-background4').checked = false;
+      document.querySelector('#switcher-background3').checked = false;
+      document.querySelector('#switcher-background2').checked = false;
+      document.querySelector('#switcher-background1').checked = false;
+      document.querySelector('#switcher-background').checked = false;
+
+      localStorage.removeItem('xinodarktheme');
+      localStorage.removeItem('xinoMenu');
+      localStorage.removeItem('xinoHeader');
+      localStorage.removeItem('bodylightRGB');
+      localStorage.removeItem('bodyBgRGB');
+      if (localStorage.getItem('xinolayout') != 'horizontal') {
+        html.setAttribute('data-menu-styles', 'gradient');
       }
-      html.setAttribute("data-header-styles", "light");
-      document.querySelector("#switcher-menu-dark").checked = false;
-      document.querySelector("#switcher-menu-gradient").checked = true;
+      html.setAttribute('data-header-styles', 'light');
+      document.querySelector('#switcher-menu-dark').checked = false;
+      document.querySelector('#switcher-menu-gradient').checked = true;
     } else {
-      console.log("dark");
-      html.setAttribute("data-theme-mode", "dark");
-      html.setAttribute("data-header-styles", "dark");
-      if (!localStorage.getItem("primaryRGB")) {
-        html.setAttribute("style", "");
+      console.log('dark');
+      html.setAttribute('data-theme-mode', 'dark');
+      html.setAttribute('data-header-styles', 'dark');
+      if (!localStorage.getItem('primaryRGB')) {
+        html.setAttribute('style', '');
       }
-      html.setAttribute("data-menu-styles", "dark");
-      document.querySelector("#switcher-dark-theme").checked = true;
-      document.querySelector("#switcher-menu-dark").checked = true;
-      document.querySelector("#switcher-header-dark").checked = true;
+      html.setAttribute('data-menu-styles', 'dark');
+      document.querySelector('#switcher-dark-theme').checked = true;
+      document.querySelector('#switcher-menu-dark').checked = true;
+      document.querySelector('#switcher-header-dark').checked = true;
       checkOptions();
-      document.querySelector("#switcher-menu-dark").checked = true;
-      document.querySelector("#switcher-header-dark").checked = true;
-      document.querySelector("#switcher-dark-theme").checked = true;
-      document.querySelector("#switcher-background4").checked = false;
-      document.querySelector("#switcher-background3").checked = false;
-      document.querySelector("#switcher-background2").checked = false;
-      document.querySelector("#switcher-background1").checked = false;
-      document.querySelector("#switcher-background").checked = false;
-      localStorage.setItem("xinodarktheme", "true");
-      localStorage.setItem("xinoMenu", "dark");
-      localStorage.setItem("xinoHeader", "dark");
-      localStorage.removeItem("bodylightRGB");
-      localStorage.removeItem("bodyBgRGB");
+      document.querySelector('#switcher-menu-dark').checked = true;
+      document.querySelector('#switcher-header-dark').checked = true;
+      document.querySelector('#switcher-dark-theme').checked = true;
+      document.querySelector('#switcher-background4').checked = false;
+      document.querySelector('#switcher-background3').checked = false;
+      document.querySelector('#switcher-background2').checked = false;
+      document.querySelector('#switcher-background1').checked = false;
+      document.querySelector('#switcher-background').checked = false;
+      localStorage.setItem('xinodarktheme', 'true');
+      localStorage.setItem('xinoMenu', 'dark');
+      localStorage.setItem('xinoHeader', 'dark');
+      localStorage.removeItem('bodylightRGB');
+      localStorage.removeItem('bodyBgRGB');
     }
   }
-  let layoutSetting = document.querySelector(".layout-setting");
-  layoutSetting.addEventListener("click", toggleTheme);
+  let layoutSetting = document.querySelector('.layout-setting');
+  layoutSetting.addEventListener('click', toggleTheme);
   /* header theme toggle */
 
   /* Choices JS */
-  document.addEventListener("DOMContentLoaded", function () {
-    var genericExamples = document.querySelectorAll("[data-trigger]");
+  document.addEventListener('DOMContentLoaded', function () {
+    var genericExamples = document.querySelectorAll('[data-trigger]');
     for (let i = 0; i < genericExamples.length; ++i) {
       var element = genericExamples[i];
       new Choices(element, {
         allowHTML: true,
         searchEnabled: false,
-        placeholderValue: "This is a placeholder set in the config",
-        searchPlaceholderValue: "Search",
+        placeholderValue: 'This is a placeholder set in the config',
+        searchPlaceholderValue: 'Search',
       });
     }
   });
   /* Choices JS */
 
   /* footer year */
-  document.getElementById("year").innerHTML = new Date().getFullYear();
+  document.getElementById('year').innerHTML = new Date().getFullYear();
   /* footer year */
 
   /* node waves */
-  Waves.attach(".btn-wave", ["waves-light"]);
+  Waves.attach('.btn-wave', ['waves-light']);
   Waves.init();
   /* node waves */
 
   /* card with close button */
-  let DIV_CARD = ".card";
+  let DIV_CARD = '.card';
   let cardRemoveBtn = document.querySelectorAll(
-    '[data-bs-toggle="card-remove"]'
+    '[data-bs-toggle="card-remove"]',
   );
-  cardRemoveBtn.forEach((ele) => {
-    ele.addEventListener("click", function (e) {
+  cardRemoveBtn.forEach(ele => {
+    ele.addEventListener('click', function (e) {
       e.preventDefault();
       let $this = this;
       let card = $this.closest(DIV_CARD);
@@ -336,14 +336,14 @@
 
   /* card with fullscreen */
   let cardFullscreenBtn = document.querySelectorAll(
-    '[data-bs-toggle="card-fullscreen"]'
+    '[data-bs-toggle="card-fullscreen"]',
   );
-  cardFullscreenBtn.forEach((ele) => {
-    ele.addEventListener("click", function (e) {
+  cardFullscreenBtn.forEach(ele => {
+    ele.addEventListener('click', function (e) {
       let $this = this;
       let card = $this.closest(DIV_CARD);
-      card.classList.toggle("card-fullscreen");
-      card.classList.remove("card-collapsed");
+      card.classList.toggle('card-fullscreen');
+      card.classList.remove('card-collapsed');
       e.preventDefault();
       return false;
     });
@@ -353,8 +353,8 @@
   /* count-up */
   var i = 1;
   setInterval(() => {
-    document.querySelectorAll(".count-up").forEach((ele) => {
-      if (ele.getAttribute("data-count") >= i) {
+    document.querySelectorAll('.count-up').forEach(ele => {
+      if (ele.getAttribute('data-count') >= i) {
         i = i + 1;
         ele.innerText = i;
       }
@@ -363,40 +363,42 @@
   /* count-up */
 
   /* back to top */
-  const scrollToTop = document.querySelector(".scrollToTop");
+  const scrollToTop = document.querySelector('.scrollToTop');
   const $rootElement = document.documentElement;
   const $body = document.body;
   window.onscroll = () => {
     const scrollTop = window.scrollY || window.pageYOffset;
     const clientHt = $rootElement.scrollHeight - $rootElement.clientHeight;
     if (window.scrollY > 100) {
-      scrollToTop.style.display = "flex";
+      scrollToTop.style.display = 'flex';
     } else {
-      scrollToTop.style.display = "none";
+      scrollToTop.style.display = 'none';
     }
   };
-  scrollToTop.onclick = () => {
+  scrollToTop.onClick = () => {
     window.scrollTo(0, 0);
   };
   /* back to top */
 
-   /* header dropdowns scroll */
-   var myHeaderShortcut = document.getElementById("header-messages-scroll");
-   new SimpleBar(myHeaderShortcut, { autoHide: true });
- 
-   var myHeadernotification = document.getElementById("header-notification-scroll");
-   new SimpleBar(myHeadernotification, { autoHide: true });
- 
-   var myHeaderCart = document.getElementById("header-cart-items-scroll");
-   new SimpleBar(myHeaderCart, { autoHide: true });
-   /* header dropdowns scroll */
+  /* header dropdowns scroll */
+  var myHeaderShortcut = document.getElementById('header-messages-scroll');
+  new SimpleBar(myHeaderShortcut, { autoHide: true });
+
+  var myHeadernotification = document.getElementById(
+    'header-notification-scroll',
+  );
+  new SimpleBar(myHeadernotification, { autoHide: true });
+
+  var myHeaderCart = document.getElementById('header-cart-items-scroll');
+  new SimpleBar(myHeaderCart, { autoHide: true });
+  /* header dropdowns scroll */
 })();
 
 /* full screen */
 var elem = document.documentElement;
 function openFullscreen() {
-  let open = document.querySelector(".full-screen-open");
-  let close = document.querySelector(".full-screen-close");
+  let open = document.querySelector('.full-screen-open');
+  let close = document.querySelector('.full-screen-close');
 
   if (
     !document.fullscreenElement &&
@@ -412,83 +414,83 @@ function openFullscreen() {
       /* IE11 */
       elem.msRequestFullscreen();
     }
-    close.classList.add("d-block");
-    close.classList.remove("d-none");
-    open.classList.add("d-none");
+    close.classList.add('d-block');
+    close.classList.remove('d-none');
+    open.classList.add('d-none');
   } else {
     if (document.exitFullscreen) {
       document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
       /* Safari */
       document.webkitExitFullscreen();
-      console.log("working");
+      console.log('working');
     } else if (document.msExitFullscreen) {
       /* IE11 */
       document.msExitFullscreen();
     }
-    close.classList.remove("d-block");
-    open.classList.remove("d-none");
-    close.classList.add("d-none");
-    open.classList.add("d-block");
+    close.classList.remove('d-block');
+    open.classList.remove('d-none');
+    close.classList.add('d-none');
+    open.classList.add('d-block');
   }
 }
 /* full screen */
 
 /* toggle switches */
-let customSwitch = document.querySelectorAll(".toggle");
-customSwitch.forEach((e) =>
-  e.addEventListener("click", () => {
-    e.classList.toggle("on");
-  })
+let customSwitch = document.querySelectorAll('.toggle');
+customSwitch.forEach(e =>
+  e.addEventListener('click', () => {
+    e.classList.toggle('on');
+  }),
 );
 /* toggle switches */
 
 /* header dropdown close button */
 
 /* for cart dropdown */
-const headerbtn = document.querySelectorAll(".dropdown-item-close");
-headerbtn.forEach((button) => {
-  button.addEventListener("click", (e) => {
+const headerbtn = document.querySelectorAll('.dropdown-item-close');
+headerbtn.forEach(button => {
+  button.addEventListener('click', e => {
     e.preventDefault();
     e.stopPropagation();
     button.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
-    document.getElementById("cart-data").innerText = `${
-      document.querySelectorAll(".dropdown-item-close").length
+    document.getElementById('cart-data').innerText = `${
+      document.querySelectorAll('.dropdown-item-close').length
     } Items`;
-    document.getElementById("cart-icon-badge").innerText = `${
-      document.querySelectorAll(".dropdown-item-close").length
+    document.getElementById('cart-icon-badge').innerText = `${
+      document.querySelectorAll('.dropdown-item-close').length
     }`;
     console.log(
-      document.getElementById("header-cart-items-scroll").children.length
+      document.getElementById('header-cart-items-scroll').children.length,
     );
-    if (document.querySelectorAll(".dropdown-item-close").length == 0) {
-      let elementHide = document.querySelector(".empty-header-item");
-      let elementShow = document.querySelector(".empty-item");
-      elementHide.classList.add("d-none");
-      elementShow.classList.remove("d-none");
+    if (document.querySelectorAll('.dropdown-item-close').length == 0) {
+      let elementHide = document.querySelector('.empty-header-item');
+      let elementShow = document.querySelector('.empty-item');
+      elementHide.classList.add('d-none');
+      elementShow.classList.remove('d-none');
     }
   });
 });
 /* for cart dropdown */
 
 /* for notifications dropdown */
-const headerbtn1 = document.querySelectorAll(".dropdown-item-close1");
-headerbtn1.forEach((button) => {
-  button.addEventListener("click", (e) => {
+const headerbtn1 = document.querySelectorAll('.dropdown-item-close1');
+headerbtn1.forEach(button => {
+  button.addEventListener('click', e => {
     e.preventDefault();
     e.stopPropagation();
     button.parentNode.parentNode.parentNode.parentNode.remove();
-    document.getElementById("notifiation-data").innerText = `${
-      document.querySelectorAll(".dropdown-item-close1").length
+    document.getElementById('notifiation-data').innerText = `${
+      document.querySelectorAll('.dropdown-item-close1').length
     } Unread`;
-    document.getElementById("notification-icon-badge").innerText = `${
-      document.querySelectorAll(".dropdown-item-close1").length
+    document.getElementById('notification-icon-badge').innerText = `${
+      document.querySelectorAll('.dropdown-item-close1').length
     }`;
-    if (document.querySelectorAll(".dropdown-item-close1").length == 0) {
-      let elementHide1 = document.querySelector(".empty-header-item1");
-      let elementShow1 = document.querySelector(".empty-item1");
-      elementHide1.classList.add("d-none");
-      elementShow1.classList.remove("d-none");
+    if (document.querySelectorAll('.dropdown-item-close1').length == 0) {
+      let elementHide1 = document.querySelector('.empty-header-item1');
+      let elementShow1 = document.querySelector('.empty-item1');
+      elementHide1.classList.add('d-none');
+      elementShow1.classList.remove('d-none');
     }
   });
 });

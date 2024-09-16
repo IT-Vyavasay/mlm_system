@@ -1,0 +1,204 @@
+.card.custom-card .card-body.crypto-card {
+    padding: 11px 7px;
+}
+.crypto .media {
+    position: absolute;
+}
+
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+.crypto .coin-logo {
+    width: 42px;
+    height: 42px;
+    color: #fff;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-inline-end: 15px;
+}
+.media-body {
+    flex: 1;
+}
+.card-body-top {
+    top: 63px;
+    inset-inline-start: -5px;
+    position: absolute;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 5;
+    a {
+        color: $default-text-color;
+        font-weight: 700;
+        width: 20px;
+        text-align: right;
+        display: inline-block;
+    }
+}
+.crypto h6 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: $default-text-color;
+}
+.crypto #flotChart3, 
+.crypto #flotChart5, 
+.crypto #flotChart1 {
+    position: relative;
+    margin: 0 -40px;
+    margin-bottom: -40px;
+}
+.crypto .card-footer {
+    background-color: $custom-white;
+    padding: 0;
+}
+
+.crypto .card-footer .nav-link {
+    flex: 1;
+    display: block;
+    text-align: center;
+    position: relative;
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+}
+.crypto .card-footer .nav-link {
+    display: block;
+    padding: 0.5rem 1.49rem;
+}
+.crypto .card-footer .nav-link.active::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    z-index: 5;
+}
+.crypto .card-footer .nav-link span:first-child {
+    color: $text-muted;
+    font-weight: 300;
+    font-size: 11px;
+}
+
+.crypto .card-footer .nav-link span {
+    display: block;
+}
+.crypto .card-footer .nav-link span:last-child {
+    color: $default-text-color;
+    font-weight: 500;
+    font-size: 11px;
+}
+.card.crypto {
+    .apexcharts-title-text {
+        display: none;
+    }
+    .apexcharts-grid line, .apexcharts-grid-borders line, .apexcharts-xaxis line {
+        stroke: none;
+    }
+}
+.card-minimal-two {
+    height: 72px;
+    border-color: $default-border;
+    background-color: transparent;
+    overflow: hidden;
+}
+@media (min-width: 576px) {
+    .card-minimal-two .card-header {
+        display: flex;
+        padding: 15px 20px;
+    }
+}
+
+.card-minimal-two .card-header {
+    background-color: transparent;
+    padding: 15px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $default-border;
+}
+
+.card-minimal-two .nav-link {
+    display: block;
+    padding: 8px 30px;
+    margin: 2px;
+    background-color: $light;
+    border-radius: 3px;
+    color: $text-muted;
+    font-weight: normal;
+}
+.card-minimal-two .nav-link:not(.active):hover {
+    color: $primary;
+}
+.card-bitcoin .media-icon {
+    color: $warning;
+    font-size: 42px;
+    line-height: 0;
+}
+.card-bitcoin .media-body {
+    margin-inline-start: 20px;
+    margin-bottom: 10px;
+}
+.card-bitcoin label {
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: $text-muted;
+}
+.card-bitcoin p {
+    margin-bottom: 0;
+    color: $default-text-color;
+    font-weight: 700;
+    font-size: 16px;
+}
+.transcation-scroll .list-unstyled li {
+    display: flex;
+    margin-bottom: 20px;
+}
+.transcation-scroll {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+#ethChart,
+#litecoin-chart,
+#ripple-chart {
+    margin-inline-end: -40px;
+    margin-inline-start: -40px;
+    margin-block-end: -63px;
+    position: relative;
+}
+@media (min-width: 992px) {
+    .dropdown-menu-arrow:after {
+        content: "";
+        position: absolute;
+        top: -8.5px;
+        inset-inline-end: 24px;
+        border-bottom: 9px solid #763fcd;
+        border-inline-start: 9px solid transparent;
+        border-inline-end: 9px solid transparent;
+    }
+}
+.dropdown-menu .menu-header-content {
+    background: linear-gradient(135deg, $primary 0%, #8039ca 100%);
+}
+@media (max-width: 991px) {
+    .card-bitcoin .media { 
+        display: flex;
+        align-items: flex-start;
+        .card-bitcoin .row {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+        overflow-x: scroll;
+    }
+}
+.card-bitcoin .row {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+}

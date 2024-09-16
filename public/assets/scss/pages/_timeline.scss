@@ -1,0 +1,222 @@
+/*--- Vertical --*/
+
+.vtimeline {
+	list-style: none;
+	padding: 0;
+	position: relative;
+	margin-bottom: 20px;
+  
+	&:before {
+	  top: 15px;
+	  bottom: 0;
+	  position: absolute;
+	  content: " ";
+	  width: 3px;
+	  background-color: $light;
+	  inset-inline-start: 50%;
+	  margin-inline-start: -1.5px;
+	  max-height: calc(100% - 9.375rem);
+	}
+  
+	.timeline-wrapper {
+	  display: block;
+	  margin-bottom: 20px;
+	  position: relative;
+	  width: 100%;
+	  padding-inline-end: 90px;
+  
+	  &:before {
+		content: " ";
+		display: table;
+	  }
+  
+	  &:after {
+		content: " ";
+		display: table;
+		clear: both;
+	  }
+  
+	  .timeline-panel {
+		border-radius: 2px;
+		padding: 20px;
+		position: relative;
+		background: $light;
+		border-radius: 0px;
+		box-shadow: 0 0px 3px rgba(162, 169, 204, 0.24);
+		width: 35%;
+		margin-inline-start: 15%;
+  
+		&:before {
+		  position: absolute;
+		  top: 0;
+		  width: 100%;
+		  height: 2px;
+		  content: "";
+		  inset-inline-start: 0;
+		  inset-inline-end: 0;
+		}
+  
+		&:after {
+		  position: absolute;
+		  top: 10px;
+		  inset-inline-end: -14px;
+		  display: inline-block;
+		  border-top: 14px solid transparent;
+		  border-inline-start: 14px solid $light;
+		  border-inline-end: 0 solid $light;
+		  border-bottom: 14px solid transparent;
+		  content: " ";
+		}
+  
+		.timeline-title {
+		  font-size: 1rem;
+		  font-weight: 700;
+		  margin: 0 0 .625rem;
+		}
+  
+		.timeline-body {
+		  p + p {
+			margin-top: 5px;
+		  }
+  
+		  ul {
+			margin-bottom: 0;
+		  }
+		}
+  
+		.timeline-footer span {
+		  font-size: .6875rem;
+		}
+	  }
+  
+	  .timeline-badge {
+		width: 14px;
+		height: 14px;
+		position: absolute;
+		top: 16px;
+		inset-inline-start: calc(50% - 7px);
+		z-index: 0;
+		border-start-end-radius: 50%;
+		border-start-start-radius: 50%;
+		border-end-end-radius: 50%;
+		border-end-start-radius: 50%;
+		border: 2px solid $white;
+  
+		i {
+		  color: $white;
+		}
+	  }
+  
+	  &.timeline-inverted {
+		padding-inline-end: 0;
+		padding-inline-start: 90px;
+  
+		.timeline-panel {
+		  margin-inline-start: auto;
+		  margin-inline-end: 15%;
+  
+		  &:after {
+			border-inline-start-width: 0;
+			border-inline-end-width: 14px;
+			inset-inline-start: -14px;
+			inset-inline-end: auto;
+		  }
+		}
+	  }
+	}
+  }
+  
+  .timeline-wrapper-primary {
+	.timeline-panel:before, .timeline-badge {
+	  background: $primary;
+	}
+  }
+  
+  .timeline-wrapper-secondary {
+	.timeline-panel:before, .timeline-badge {
+	  background: #eb6f33;
+	}
+  }
+  
+  .timeline-wrapper-success {
+	.timeline-panel:before, .timeline-badge {
+	  background: $success;
+	}
+  }
+  
+  .timeline-wrapper-info {
+	.timeline-panel:before, .timeline-badge {
+	  background: #01b8ff;
+	}
+  }
+  
+  .timeline-wrapper-warning {
+	.timeline-panel:before, .timeline-badge {
+	  background: $warning;
+	}
+  }
+  
+  .timeline-wrapper-danger {
+	.timeline-panel:before, .timeline-badge {
+	  background: $danger;
+	}
+  }
+  
+  .timeline-wrapper-light {
+	.timeline-panel:before, .timeline-badge {
+	  background: #f1f2f9;
+	}
+  }
+  
+  .timeline-wrapper-dark {
+	.timeline-panel:before, .timeline-badge {
+	  background: $default-text-color;
+	}
+  }
+  
+  @media (max-width: 768px) {
+	.timeline .btn {
+	  font-size: 12px;
+	}
+  
+	.vtimeline {
+	  &:before {
+		inset-inline-start: 7px !important;
+	  }
+  
+	  .timeline-wrapper {
+		.timeline-badge {
+			inset-inline-start: 0px !important;
+		}
+  
+		padding-inline-end: 0 !important;
+  
+		.timeline-panel {
+		  width: auto !important;
+		  margin-inline-start: 10% !important;
+  
+		  &:after {
+			border-inline-end: 14px solid $gray-1  !important;
+			border-inline-start: 0 solid $gray-1  !important;
+			inset-inline-start: -14px !important;
+			inset-inline-end: auto !important;
+		  }
+		}
+  
+		&.timeline-inverted {
+		  padding-inline-start: 0 !important;
+  
+		  .timeline-panel {
+			margin-inline-end: 0 !important;
+			width: auto !important;
+		  }
+		}
+	  }
+	}
+  }
+
+  @media(max-width: 360px){
+	.vtimeline .timeline-wrapper .timeline-panel:after {
+		inset-inline-start: -11px !important;
+	}
+  }
